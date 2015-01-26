@@ -1,20 +1,18 @@
 function View() {
+  this.source         = $("#tweet-template").html();
+  this.tweetTemplate = Handlebars.compile(this.source);
   this.riverNode     = $('#tweets-container ul');
-  this.tweetsContainer = $('#tweets-container');
-  this.tweetTemplate = $('#tweet-template');
+
 }
 
 View.prototype = {
-  initialize: function (tweets) {
-    //not working for some reason
+  initialize: function(tweetsData) {
     this.riverNode.empty();
-    console.log(this.tweetTemplate);
-    tweets.forEach( function (tweet) {
-      // put the tweet into the tweet template
-      // append the tweet to the riverNode
-      // var formattedTweet = this.tweetTemplate(tweet)
-      // console.log(formattedTweet);
-      // this.riverNode.append(formattedTweet)
-    })
-  }
+    for(var index = 0; index < tweetsData.length; index++) {
+      var context   = tweetsData[index];
+      console.log(context);
+      var tweetHTML = this.tweetTemplate(context);
+      this.riverNode.append(tweetHTML);
+    }
+  },
 }

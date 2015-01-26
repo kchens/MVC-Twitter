@@ -1,6 +1,6 @@
-function Controller(river, view) {
-  this.river = river;
-  this.view = view;
+function Controller() {
+  this.river = new River();
+  this.view = new View();
 }
 
 Controller.prototype = {
@@ -21,5 +21,6 @@ Controller.prototype = {
   },
   run: function () {
     this.initialize();
+    console.log("initialized");
   }
 }
